@@ -20,16 +20,16 @@ tasks.taskSyncWithErrorHandling();
 // Execution of task four version 2
 tasks.taskAsyncWithErrorHandling();
 
-createFile();
 // Execution of task five version 1
+createFile();
 tasks.taskSyncWithWriteToFile();
 
-createFile();
 // Execution of task five version 2
+createFile();
 tasks.taskAsyncWithWriteToFile();
 */
 
-createFile();
 // Task to test performance with slow mode enabled. To enable slow mode SLOW_MODE_ENABLED config need to be set to true.
+createFile();
 tasks.taskAsyncWithTimer();
 
