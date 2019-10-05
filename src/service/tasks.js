@@ -1,13 +1,14 @@
+const {SLOW_MODE_ENABLED} = require("../common/configs");
 const {getRandomWordSync, getRandomWord} = require('word-maker');
 const {writeToFile} = require('../util/fileUtils');
 
-const taskOne = () => {
+const taskSyncRandomWords = () => {
     for (let i = 1; i < 101; i++) {
         console.log(`${i}: ${getRandomWordSync()}`)
     }
 };
 
-const taskTwo = () => {
+const taskSyncFizzBuzzWords = () => {
     for (let i = 1; i < 101; i++) {
         if (i % 3 === 0 && i % 5 === 0) {
             console.log(`${i}: FizzBuzz`)
@@ -21,7 +22,7 @@ const taskTwo = () => {
     }
 };
 
-const taskThreeV1 = () => {
+const taskAsyncRandomWords = () => {
     const response = [];
 
     for (let i = 1; i < 101; i++) {
@@ -36,7 +37,7 @@ const taskThreeV1 = () => {
     })
 };
 
-const taskThreeV2 = () => {
+const taskAsyncFizzBuzzWords = () => {
     const response = [];
 
     for (let i = 1; i < 101; i++) {
@@ -59,7 +60,7 @@ const taskThreeV2 = () => {
     })
 };
 
-const taskFourV1 = () => {
+const taskSyncWithErrorHandling = () => {
     for (let i = 1; i < 101; i++) {
         if (i % 3 === 0 && i % 5 === 0) {
             console.log(`${i}: FizzBuzz`)
@@ -77,7 +78,7 @@ const taskFourV1 = () => {
     }
 };
 
-const taskFourV2 = () => {
+const taskAsyncWithErrorHandling = () => {
     const response = [];
 
     for (let i = 1; i < 101; i++) {
@@ -100,7 +101,7 @@ const taskFourV2 = () => {
     })
 };
 
-const taskFiveV1 = () => {
+const taskSyncWithWriteToFile = () => {
     for (let i = 1; i < 101; i++) {
         if (i % 3 === 0 && i % 5 === 0) {
             writeToFile(`${i}: FizzBuzz`)
@@ -118,7 +119,7 @@ const taskFiveV1 = () => {
     }
 };
 
-const taskFiveV2 = () => {
+const taskAsyncWithWriteToFile = () => {
     const response = [];
 
     for (let i = 1; i < 101; i++) {
@@ -141,7 +142,7 @@ const taskFiveV2 = () => {
     })
 };
 
-const bonusTask = () => {
+const taskAsyncWithTimer = () => {
     console.time("Total time taken when slow mode enabled: ");
 
     const response = [];
@@ -154,7 +155,10 @@ const bonusTask = () => {
         } else if (i % 5 === 0) {
             response.push("Buzz");
         } else {
-            response.push(getRandomWord({withErrors: true, slow: true}).catch(() => "It shouldn't break anything!"));
+            response.push(getRandomWord({
+                withErrors: true,
+                slow: SLOW_MODE_ENABLED
+            }).catch(() => "It shouldn't break anything!"));
         }
     }
 
@@ -168,13 +172,13 @@ const bonusTask = () => {
 };
 
 module.exports = {
-    taskOne,
-    taskTwo,
-    taskThreeV1,
-    taskThreeV2,
-    taskFourV1,
-    taskFourV2,
-    taskFiveV1,
-    taskFiveV2,
-    bonusTask
+    taskSyncRandomWords,
+    taskSyncFizzBuzzWords,
+    taskAsyncRandomWords,
+    taskAsyncFizzBuzzWords,
+    taskSyncWithErrorHandling,
+    taskAsyncWithErrorHandling,
+    taskSyncWithWriteToFile,
+    taskAsyncWithWriteToFile,
+    taskAsyncWithTimer
 };

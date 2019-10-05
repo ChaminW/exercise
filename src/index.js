@@ -1,30 +1,35 @@
 const {createFile} = require('./util/fileUtils');
 const tasks = require('./service/tasks');
 
+/*
 // Execution of task one
-// taskOne();
+tasks.taskSyncRandomWords();
 
 // Execution of task two
-// taskTwo();
+tasks.taskSyncFizzBuzzWords();
 
 // Execution of task three version 1
-// taskThreeV1();
+tasks.taskAsyncRandomWords();
 
 // Execution of task three version 2
-// taskThreeV1();
+tasks.taskAsyncFizzBuzzWords();
 
 // Execution of task four version 1
-// taskFourV1();
+tasks.taskSyncWithErrorHandling();
 
 // Execution of task four version 2
-// taskFourV1();
+tasks.taskAsyncWithErrorHandling();
 
 createFile();
-// Execution of task four version 1
-// taskFiveV1();
+// Execution of task five version 1
+tasks.taskSyncWithWriteToFile();
 
-// Execution of task four version 2
-// taskFiveV1();
+createFile();
+// Execution of task five version 2
+tasks.taskAsyncWithWriteToFile();
+*/
 
-tasks.bonusTask();
+createFile();
+// Task to test performance with slow mode enabled. To enable slow mode SLOW_MODE_ENABLED config need to be set to true.
+tasks.taskAsyncWithTimer();
 
