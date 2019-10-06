@@ -1,6 +1,6 @@
-const {SLOW_MODE_ENABLED} = require("../common/configs");
 const {getRandomWordSync, getRandomWord} = require('word-maker');
 const {writeToFile} = require('../util/fileUtils');
+const {SLOW_MODE_ENABLED} = require("../common/configs");
 
 /**
  * @description Print numbers from 1 to 100 to the console, for each number also print a random word using the function getRandomWordSync.
